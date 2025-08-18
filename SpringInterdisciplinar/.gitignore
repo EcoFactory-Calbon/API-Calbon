@@ -31,6 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
-C:\Users\leonardochen-ieg\OneDrive - Instituto Germinare\Área de Trabalho\Tech2\Interdisciplinar Calbon\SpringCalbon\springInterdisciplinar\.env
 
+
+# Arquivos de configuração local (não versionar segredos)
+.env
+*.env
+
+# application.properties/yml locais (se tiver dados sensíveis)
+src/main/resources/application.properties
 
