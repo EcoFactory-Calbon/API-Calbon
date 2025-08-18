@@ -4,21 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ce16447-53b3-408d-831d-2d444520edc0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/SpringInterdisciplinarApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springinterdisciplinar/SpringInterdisciplinarApplicationTests.java" beforeDir="false" />
+    <list default="true" id="fe2a92de-afbf-482f-8db1-1979e6d5bc68" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Controller/FuncionarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Controller/UsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Exception/AdminNaoEncontradoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Exception/DadosInvalidosException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Exception/FuncionarioNaoEncontradoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Exception/ManipuladorGlobalException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Exception/UsuarioNaoEncontradoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Model/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Model/Funcionario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Model/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Repository/AdminRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Repository/FuncionarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Repository/UsuarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Service/AdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Service/FuncionarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Service/UsuarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springinterdisciplinar/Validation/AdminPatchValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Exception" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -35,6 +56,10 @@
     &quot;accountId&quot;: &quot;94183345-6e59-4ded-99b5-db5667fda128&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -43,32 +68,74 @@
     </option>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 8
 }</component>
-  <component name="ProjectId" id="2yxyCT1csSFCqzRqJQMFxfqHGQa" />
+  <component name="ProjectId" id="2zbbvFwbQi1E6cqEtwkDvgefOfq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.SpringInterdisciplinarApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/leonardochen-ieg/OneDrive - Instituto Germinare/Área de Trabalho/Tech2/Interdisciplinar Calbon/calbon",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.generated-requests | #11.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #12.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #13.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #14.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #15.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #16.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #17.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #18.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SpringInterdisciplinarApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager" selected="Spring Boot.SpringInterdisciplinarApplication">
+    <configuration name="generated-requests | #14" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="14" requestIdentifier="#14" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #15" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="15" requestIdentifier="#15" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #16" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="16" requestIdentifier="#16" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #17" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="17" requestIdentifier="#17" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #18" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="18" requestIdentifier="#18" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="SpringInterdisciplinarApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="springInterdisciplinar" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springinterdisciplinar.SpringInterdisciplinarApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests | #18" />
+        <item itemvalue="HTTP Request.generated-requests | #17" />
+        <item itemvalue="HTTP Request.generated-requests | #16" />
+        <item itemvalue="HTTP Request.generated-requests | #15" />
+        <item itemvalue="HTTP Request.generated-requests | #14" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -80,17 +147,31 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1ce16447-53b3-408d-831d-2d444520edc0" name="Changes" comment="" />
-      <created>1750790392673</created>
+      <changelist id="fe2a92de-afbf-482f-8db1-1979e6d5bc68" name="Changes" comment="" />
+      <created>1752002952583</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1750790392673</updated>
-      <workItem from="1750790393753" duration="420000" />
-      <workItem from="1750791038704" duration="433000" />
+      <updated>1752002952583</updated>
+      <workItem from="1752002953597" duration="6447000" />
+      <workItem from="1752236866750" duration="1159000" />
+      <workItem from="1752495109458" duration="338000" />
+      <workItem from="1753382351425" duration="54000" />
+      <workItem from="1754316360318" duration="10000" />
+      <workItem from="1754993832615" duration="1426000" />
+      <workItem from="1755082797304" duration="3747000" />
+      <workItem from="1755106199602" duration="16226000" />
+      <workItem from="1755181436265" duration="221000" />
+      <workItem from="1755181698111" duration="159000" />
+      <workItem from="1755181874220" duration="3816000" />
+      <workItem from="1755263423479" duration="4840000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
