@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20aa26e7-d9c2-4f7f-8986-71e54b7389bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/html/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/html/index.html" afterDir="false" />
+    <list default="true" id="20aa26e7-d9c2-4f7f-8986-71e54b7389bd" name="Changes" comment="Criando arquivo html puxando dados de API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,10 +143,24 @@
       <option name="presentableId" value="Default" />
       <updated>1755598980766</updated>
       <workItem from="1755598981975" duration="1791000" />
+      <workItem from="1755608730581" duration="950000" />
     </task>
+    <task id="LOCAL-00001" summary="Criando arquivo html puxando dados de API">
+      <option name="closed" value="true" />
+      <created>1755609024332</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1755609024332</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Criando arquivo html puxando dados de API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criando arquivo html puxando dados de API" />
   </component>
 </project>
