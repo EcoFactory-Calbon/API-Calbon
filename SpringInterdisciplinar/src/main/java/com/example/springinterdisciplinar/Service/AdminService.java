@@ -3,9 +3,7 @@ package com.example.springinterdisciplinar.Service;
 import com.example.springinterdisciplinar.Exception.AdminNaoEncontradoException;
 import com.example.springinterdisciplinar.Model.Admin;
 import com.example.springinterdisciplinar.Repository.AdminRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -31,17 +29,17 @@ public class AdminService {
         adminRepository.delete(admin);
     }
 
-//    public Admin atualizarProduto(Admin adminAtualizado, String email) {
-//        Admin existente = adminRepository.findByEmail(email)
-//                .orElseThrow(() -> new AdminNaoEncontradoException("Admin com o Email " + email + " não encontrado"));
-//        if (adminAtualizado.getNome().equals(existente.getNome())) {
-//            existente.setNome(adminAtualizado.getNome());
-//        }
-//        if (adminAtualizado.getSenha().equals(existente.getSenha())) {
-//            existente.setSenha(adminAtualizado.getSenha());
-//        }
-//        validarProduto(existente);
-//        return produtoRepository.save(existente);
-//    }
+    //    public Admin atualizarProduto(Admin adminAtualizado, String email) {
+    //        Admin existente = adminRepository.findByEmail(email)
+    //                .orElseThrow(() -> new AdminNaoEncontradoException("Admin com o Email " + email + " não encontrado"));
+    //        if (adminAtualizado.getNome().equals(existente.getNome())) {
+    //            existente.setNome(adminAtualizado.getNome());
+    //        }
+    //        if (adminAtualizado.getSenha().equals(existente.getSenha())) {
+    //            existente.setSenha(adminAtualizado.getSenha());
+    //        }
+    //        validarProduto(existente);
+    //        return produtoRepository.save(existente);
+    //    }
 
     }

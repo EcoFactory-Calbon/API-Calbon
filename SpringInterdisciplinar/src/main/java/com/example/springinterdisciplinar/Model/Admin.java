@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service;
 @Entity
 public class Admin {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String email;
-    @Setter
     private String nome;
-    @Setter
     private String senha;
 
     public Admin(){}
@@ -32,6 +31,18 @@ public class Admin {
     }
     public String getSenha() {
         return senha;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Override
