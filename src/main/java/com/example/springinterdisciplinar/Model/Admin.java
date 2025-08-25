@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Entity
 public class Admin {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String email;
     private String nome;
     private String senha;
