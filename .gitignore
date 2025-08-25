@@ -37,6 +37,3 @@ build/
 .env
 *.env
 
-# application.properties/yml locais (se tiver dados sensíveis)
-src/main/resources/application.properties
-
