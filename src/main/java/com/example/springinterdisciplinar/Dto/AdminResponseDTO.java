@@ -5,6 +5,8 @@ public class AdminResponseDTO {
     private String email;
     private String nome;
 
+    public AdminResponseDTO() {}
+
     public AdminResponseDTO(String email, String nome) {
         this.email = email;
         this.nome = nome;
