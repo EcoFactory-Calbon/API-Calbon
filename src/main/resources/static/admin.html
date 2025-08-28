@@ -11,7 +11,7 @@
 
     <!-- Formulário de Cadastro -->
     <div class="card mb-4 shadow-sm">
-        <div class="card-header">Adicionar Admin</div>
+        <div class="card-header">Inserir Admin</div>
         <div class="card-body">
             <form id="formAdmin">
                 <div class="mb-3">
@@ -26,7 +26,7 @@
                     <label for="senha" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="senha" required minlength="8">
                 </div>
-                <button type="submit" class="btn btn-primary">Adicionar</button>
+                <button type="submit" class="btn btn-primary">Inserir</button>
             </form>
         </div>
     </div>
@@ -129,12 +129,12 @@
             senha: document.getElementById("senha").value
         };
         try {
-            const resposta = await fetch(apiBase + "/adicionar", {
+            const resposta = await fetch(apiBase + "/inserir", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(admin)
             });
-            if (!resposta.ok) throw new Error("Erro ao adicionar admin");
+            if (!resposta.ok) throw new Error("Erro ao inserir admin");
             alert("Admin adicionado com sucesso");
             e.target.reset();
             carregarAdmins();

@@ -23,7 +23,7 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionarios);
     }
 
-    @PostMapping("/adicionar")
+    @PostMapping("/inserir")
     public ResponseEntity<Funcionario> adicionarFuncionario(@RequestBody Funcionario funcionario) {
         Funcionario novo = funcionarioService.inserirFuncionario(funcionario);
         return ResponseEntity.status(HttpStatus.CREATED).body(novo);
