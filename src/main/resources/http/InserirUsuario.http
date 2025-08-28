@@ -1,6 +1,0 @@
-POST http://localhost:8080/usuario/inserir
-Content-Type: application/json
-
-{
-  "cracha": "CR1234"
-}
