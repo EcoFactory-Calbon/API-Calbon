@@ -1,39 +1,44 @@
 package com.example.springinterdisciplinar.Dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class AdminRequestDTO {
     @Email
+    @Valid
     private String email;
+    @Valid
+    @Size(min = 3, message = "O nome deve ter 3 ou mais caracteres")
     @NotNull(message = "O nome não pode ser nulo")
     private String nome;
+    @Valid
     @Size(min = 8, message = "Senha deve ter mais de 8 caracteres")
     @NotNull(message = "Senha não pode ser nula")
     private String senha;
 
-    public @Email String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public @NotNull(message = "O nome não pode ser nulo") String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public @Size(min = 8, message = "Senha deve ter mais de 8 caracteres") @NotNull(message = "Senha não pode ser nula") String getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setEmail(@Email String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setNome(@NotNull(message = "O nome não pode ser nulo") String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setSenha(@Size(min = 8, message = "Senha deve ter mais de 8 caracteres") @NotNull(message = "Senha não pode ser nula") String senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 }

@@ -51,33 +51,74 @@
     </div>
 </div>
 
+<!-- Modal para editar admin -->
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditar">
+                    <input type="hidden" id="emailOriginal">
+                    <div class="mb-3">
+                        <label for="editarEmail" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="editarEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editarNome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="editarNome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editarSenha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="editarSenha" minlength="8">
+                    </div>
+                    <button type="submit" class="btn btn-success">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     const apiBase = "http://localhost:8080/admin"; // ajuste se necessário
+    const modal = new bootstrap.Modal(document.getElementById('modalEditar'));
 
     async function carregarAdmins() {
-        const resposta = await fetch(`${apiBase}/listar`);
-        const admins = await resposta.json();
-        const tbody = document.querySelector("#tabelaAdmins tbody");
-        tbody.innerHTML = "";
-        admins.forEach(admin => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
+        try {
+            const resposta = await fetch(apiBase + "/listar");
+            const admins = await resposta.json();
+            const tbody = document.querySelector("#tabelaAdmins tbody");
+            tbody.innerHTML = "";
+            admins.forEach(admin => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
                 <td>${admin.email}</td>
                 <td>${admin.nome}</td>
                 <td>
+                    <button class="btn btn-primary btn-sm me-1" onclick="abrirModalEditar('${admin.email}','${admin.nome}')">Editar</button>
                     <button class="btn btn-danger btn-sm" onclick="excluirAdmin('${admin.email}')">Excluir</button>
                 </td>
             `;
-            tbody.appendChild(tr);
-        });
+                tbody.appendChild(tr);
+            });
+        } catch (error) {
+            alert("Erro ao carregar admins: " + error.message);
+        }
     }
 
     async function excluirAdmin(email) {
         if (!confirm(`Tem certeza que deseja excluir o admin ${email}?`)) return;
-        await fetch(`${apiBase}/excluir/${email}`, { method: "DELETE" });
-        carregarAdmins();
-        alert("Admin excluido")
-
+        try {
+            const resposta = await fetch(`${apiBase}/${email}`, { method: "DELETE" });
+            if (!resposta.ok) throw new Error("Erro ao excluir admin");
+            alert("Admin excluído com sucesso");
+            carregarAdmins();
+        } catch (error) {
+            alert(error.message);
+        }
     }
 
     document.getElementById("formAdmin").addEventListener("submit", async (e) => {
@@ -87,14 +128,64 @@
             nome: document.getElementById("nome").value,
             senha: document.getElementById("senha").value
         };
-        await fetch(`${apiBase}/adicionar`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(admin)
-        });
-        e.target.reset();
-        carregarAdmins();
-        alert("Admin adicionado")
+        try {
+            const resposta = await fetch(apiBase + "/adicionar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(admin)
+            });
+            if (!resposta.ok) throw new Error("Erro ao adicionar admin");
+            alert("Admin adicionado com sucesso");
+            e.target.reset();
+            carregarAdmins();
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+
+    // Abrir modal com dados do admin para edição
+    function abrirModalEditar(email, nome) {
+        document.getElementById("emailOriginal").value = email;
+        document.getElementById("editarEmail").value = email;
+        document.getElementById("editarNome").value = nome;
+        document.getElementById("editarSenha").value = ""; // senha não obrigatória no PATCH
+        modal.show();
+    }
+
+    // Atualizar admin (PUT ou PATCH) via modal
+    document.getElementById("formEditar").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const emailOriginal = document.getElementById("emailOriginal").value;
+        const email = document.getElementById("editarEmail").value;
+        const nome = document.getElementById("editarNome").value;
+        const senha = document.getElementById("editarSenha").value;
+
+        try {
+            let response;
+            if (senha) {
+                // Se a senha foi preenchida, atualizamos total (PUT)
+                response = await fetch(`${apiBase}/atualizar/${emailOriginal}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, nome, senha })
+                });
+            } else {
+                // Senha vazia → atualização parcial (PATCH)
+                const updates = { email, nome };
+                response = await fetch(`${apiBase}/atualizar/${emailOriginal}`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(updates)
+                });
+            }
+
+            if (!response.ok) throw new Error("Erro ao atualizar admin");
+            alert("Admin atualizado com sucesso");
+            modal.hide();
+            carregarAdmins();
+        } catch (error) {
+            alert(error.message);
+        }
     });
 
     carregarAdmins();

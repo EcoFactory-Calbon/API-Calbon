@@ -1,26 +1,59 @@
 package com.example.springinterdisciplinar.Service;
 
+import com.example.springinterdisciplinar.Dto.AdminRequestDTO;
+import com.example.springinterdisciplinar.Dto.AdminResponseDTO;
 import com.example.springinterdisciplinar.Exception.AdminNaoEncontradoException;
 import com.example.springinterdisciplinar.Model.Admin;
 import com.example.springinterdisciplinar.Repository.AdminRepository;
+import com.example.springinterdisciplinar.Validation.AdminPatchValidation;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminService {
 
     private final AdminRepository adminRepository;
-    public AdminService(AdminRepository adminRepository) {
+    private final AdminPatchValidation adminPatchValidation;
+    private final ObjectMapper objectMapper;
+
+    public AdminService(AdminRepository adminRepository, ObjectMapper objectMapper, AdminPatchValidation adminPatchValidation) {
         this.adminRepository = adminRepository;
+        this.adminPatchValidation = adminPatchValidation;
+        this.objectMapper = objectMapper;
     }
 
-    public List<Admin> listar() {
-        return adminRepository.findAll();
+    private Admin fromRequestDTO(AdminRequestDTO dto){
+        Admin admin = new Admin();
+        admin.setEmail(dto.getEmail());
+        admin.setNome(dto.getNome());
+        admin.setSenha(dto.getSenha());
+        return admin;
     }
 
-    public Admin inserirAdmin(Admin admin) {
-        return adminRepository.save(admin);
+
+    private AdminResponseDTO toResponseDTO(Admin admin) {
+        return new AdminResponseDTO(
+                admin.getEmail(),
+                admin.getNome()
+        );
+    }
+
+    public List<AdminResponseDTO> listar() {
+        return adminRepository.findAll()
+                .stream()
+                .map(this::toResponseDTO)
+                .collect(Collectors.toList());
+    }
+
+    public AdminResponseDTO inserirAdmin(AdminRequestDTO dto) {
+        Admin admin = fromRequestDTO(dto);
+        Admin salvo = adminRepository.save(admin);
+        return toResponseDTO(salvo);
     }
 
     public void excluirAdmin(String email) {
@@ -29,17 +62,36 @@ public class AdminService {
         adminRepository.delete(admin);
     }
 
-    //    public Admin atualizarProduto(Admin adminAtualizado, String email) {
-    //        Admin existente = adminRepository.findByEmail(email)
-    //                .orElseThrow(() -> new AdminNaoEncontradoException("Admin com o Email " + email + " não encontrado"));
-    //        if (adminAtualizado.getNome().equals(existente.getNome())) {
-    //            existente.setNome(adminAtualizado.getNome());
-    //        }
-    //        if (adminAtualizado.getSenha().equals(existente.getSenha())) {
-    //            existente.setSenha(adminAtualizado.getSenha());
-    //        }
-    //        validarProduto(existente);
-    //        return produtoRepository.save(existente);
-    //    }
+    public AdminResponseDTO atualizarAdmin(@Valid AdminRequestDTO adminAtualizado, String email) {
+        Admin existente = adminRepository.findByEmail(email)
+                .orElseThrow(() -> new AdminNaoEncontradoException("Admin com o Email " + email + " não encontrado"));
+        existente.setEmail(adminAtualizado.getEmail());
+        existente.setNome(adminAtualizado.getNome());
+        existente.setSenha(adminAtualizado.getSenha());
+
+        Admin atualizado = adminRepository.save(existente);
+        return toResponseDTO(atualizado);
+
+    }
+
+
+    public AdminResponseDTO atualizarAdminParcialmente(Map<String, Object> updates, String email) {
+        Admin existente = adminRepository.findByEmail(email)
+                .orElseThrow(() -> new AdminNaoEncontradoException("Admin com o Email " + email+ " não foi encontrado"));
+        adminPatchValidation.validar(updates);
+
+        if(updates.containsKey("email")){
+            existente.setEmail(updates.get("email").toString());
+        }
+        if (updates.containsKey("nome")) {
+            existente.setNome(updates.get("nome").toString());
+        }
+        if (updates.containsKey("senha")) {
+            existente.setSenha(updates.get("senha").toString());
+        }
+
+        Admin atualizado = adminRepository.save(existente);
+        return toResponseDTO(atualizado);
+    }
 
     }
