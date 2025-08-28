@@ -29,7 +29,7 @@ public class AdminController {
     }
 
     // POST - adicionar admin
-    @PostMapping("/adicionar")
+    @PostMapping("/inserir")
     public ResponseEntity<AdminResponseDTO> adicionarAdmin(@RequestBody @Valid AdminRequestDTO dto) {
         AdminResponseDTO response = adminService.inserirAdmin(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

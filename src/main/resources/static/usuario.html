@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Usuários</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-4">
+    <h1 class="mb-4 text-center">Painel de Usuários</h1>
+
+    <!-- Formulário de Cadastro -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header">Adicionar Usuário</div>
+        <div class="card-body">
+            <form id="formUsuario">
+                <div class="mb-3">
+                    <label for="cracha" class="form-label">Crachá</label>
+                    <input type="text" class="form-control" id="cracha" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lista de Usuários -->
+    <div class="card shadow-sm">
+        <div class="card-header">Lista de Usuários</div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped" id="tabelaUsuarios">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Crachá</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- preenchido via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para editar usuário -->
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Usuário</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditar">
+                    <input type="hidden" id="idOriginal">
+                    <div class="mb-3">
+                        <label for="editarCracha" class="form-label">Crachá</label>
+                        <input type="text" class="form-control" id="editarCracha" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const apiBase = "http://localhost:8080/usuario";
+    const modal = new bootstrap.Modal(document.getElementById('modalEditar'));
+
+    async function carregarUsuarios() {
+        try {
+            const resposta = await fetch(apiBase + "/listar");
+            const usuarios = await resposta.json();
+            const tbody = document.querySelector("#tabelaUsuarios tbody");
+            tbody.innerHTML = "";
+            usuarios.forEach(u => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${u.id}</td>
+                    <td>${u.cracha}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm me-1" onclick="abrirModalEditar(${u.id},'${u.cracha}')">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="excluirUsuario(${u.id})">Excluir</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } catch (error) {
+            alert("Erro ao carregar usuários: " + error.message);
+        }
+    }
+
+    async function excluirUsuario(id) {
+        if (!confirm(`Tem certeza que deseja excluir o usuário ${id}?`)) return;
+        try {
+            const resposta = await fetch(`${apiBase}/excluirUsuario/${id}`, { method: "DELETE" });
+            if (!resposta.ok) throw new Error("Erro ao excluir usuário");
+            alert("Usuário excluído com sucesso");
+            carregarUsuarios();
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+
+    document.getElementById("formUsuario").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const usuario = {
+            cracha: document.getElementById("cracha").value
+        };
+        try {
+            const resposta = await fetch(apiBase + "/inserirUsuario", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(usuario)
+            });
+            if (!resposta.ok) throw new Error("Erro ao adicionar usuário");
+            alert("Usuário adicionado com sucesso");
+            e.target.reset();
+            carregarUsuarios();
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+
+    function abrirModalEditar(id, cracha) {
+        document.getElementById("idOriginal").value = id;
+        document.getElementById("editarCracha").value = cracha;
+        modal.show();
+    }
+
+    document.getElementById("formEditar").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const id = document.getElementById("idOriginal").value;
+        const cracha = document.getElementById("editarCracha").value;
+
+        try {
+            const response = await fetch(`${apiBase}/atualizar/${id}`, {
+                method: "PUT", // atualização total
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cracha })
+            });
+
+            if (!response.ok) throw new Error("Erro ao atualizar usuário");
+            alert("Usuário atualizado com sucesso");
+            modal.hide();
+            carregarUsuarios();
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+
+    carregarUsuarios();
+</script>
+</body>
+</html>
