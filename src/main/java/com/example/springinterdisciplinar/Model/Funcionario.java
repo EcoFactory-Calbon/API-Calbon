@@ -1,13 +1,16 @@
 package com.example.springinterdisciplinar.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
 public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_funcionario")
     private Long id;
 
     private String nome;
