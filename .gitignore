@@ -1,39 +1,75 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# ==================================
+# Python
+# ==================================
+_pycache_/
+*.py[cod]
+*.so
+*.pyd
+*.dll
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Virtual envs
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+# ==================================
+# Jupyter Notebooks
+# ==================================
+.ipynb_checkpoints/
+.jupyter/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Arquivos temporários de kernel
+*.json
+*.log
+
+# ==================================
+# Dados e resultados temporários
+# ==================================
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.db
+*.sqlite
+*.sqlite3
+
+# Pasta de datasets grandes
+data/
+datasets/
+.DS_Store
+
+# ==================================
+# Cache e builds
+# ==================================
+*.egg
+*.egg-info/
+dist/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+_snapshots_/
 
-### VS Code ###
+# ==================================
+# IDEs e configs locais
+# ==================================
 .vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
 
-
-# Arquivos de configuração local (não versionar segredos)
+# ==================================
+# Outros
+# ==================================
+*.zip
+*.tar
+*.gz
+*.tgz
 .env
-*.env
-
