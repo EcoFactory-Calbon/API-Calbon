@@ -1,0 +1,8 @@
+PUT http://localhost:8080/admin/atualizar/naka@gmail.com
+Content-Type: application/json
+
+{
+  "email" : "naka@gmail.com",
+  "nome": "Leo",
+  "senha": "1232141"
+}
