@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class FuncionarioRequestDTO {
-    @Column(name = "id_funcionario")
     private Long id;
 
     @NotNull(message = "Nome não pode estar vazio")
