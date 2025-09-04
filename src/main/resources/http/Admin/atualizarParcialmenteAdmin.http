@@ -1,4 +1,6 @@
 PATCH http://localhost:8080/admin/atualizar/naka@gmail.com
 Content-Type: application/json
 
-""
+{
+ "":""
+}
