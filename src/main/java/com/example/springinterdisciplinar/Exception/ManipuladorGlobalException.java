@@ -25,4 +25,10 @@ public class ManipuladorGlobalException {
                 .body("Admin não encontrado "+ex.getMessage());
     }
 
+    @ExceptionHandler(EmpresaNaoEncontradaException.class)
+    public ResponseEntity<String> manipuladorEmpresaNaoEncontradaException(EmpresaNaoEncontradaException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Empresa não encontrada "+ex.getMessage());
+    }
+
 }

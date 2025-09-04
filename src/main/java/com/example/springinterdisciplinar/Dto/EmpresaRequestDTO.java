@@ -1,12 +1,8 @@
 package com.example.springinterdisciplinar.Dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 
 public class EmpresaRequestDTO {
-
-    @Column(name = "id_empresa")
-    private Long id;
 
     @NotNull(message = "Nome não pode ser nulo")
     private String nome;
@@ -15,13 +11,7 @@ public class EmpresaRequestDTO {
 
     private Long id_categoria_empresa;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
