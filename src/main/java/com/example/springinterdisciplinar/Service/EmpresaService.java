@@ -74,7 +74,6 @@ public class EmpresaService {
 
         Empresa atualizado = empresaRepository.save(existente);
         return toResponseDTO(atualizado);
-
     }
 
 }

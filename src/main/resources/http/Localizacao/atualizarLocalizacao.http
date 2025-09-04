@@ -1,0 +1,6 @@
+PATCH http://localhost:8080/localizacao/atualizar/102
+Content-Type: application/json
+
+{
+  "": ""
+}

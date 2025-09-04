@@ -47,7 +47,7 @@ public class FuncionarioController {
         return ResponseEntity.ok(response);
     }
     @PatchMapping("/atualizar/{id}")
-    public ResponseEntity<FuncionarioResponseDTO> patchFuncionario(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+    public ResponseEntity<FuncionarioResponseDTO> atualizarParcialmenteFuncionario(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
        FuncionarioResponseDTO response = funcionarioService.atualizarFuncionarioParcialmente(updates, id);
         return ResponseEntity.ok(response);
     }

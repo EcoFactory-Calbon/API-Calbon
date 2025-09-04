@@ -31,4 +31,10 @@ public class ManipuladorGlobalException {
                 .body("Empresa não encontrada "+ex.getMessage());
     }
 
+    @ExceptionHandler(LocalizacaoNaoEncontradaException.class)
+    public ResponseEntity<String> LocalizacaoEmpresaNaoEncontradaException(LocalizacaoNaoEncontradaException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Localizacao não encontrada "+ex.getMessage());
+    }
+
 }
